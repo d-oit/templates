@@ -1,1 +1,21 @@
+# Gitlab Plain HTML Page
 
+1. Create a public folder
+2. **.gitlab-ci.yml**
+
+```yml
+# This file is a template, and might need editing before it works on your project.
+# Full project: https://gitlab.com/pages/plain-html
+
+image: busybox
+
+pages:
+  stage: deploy
+  script:
+    - echo "The site will be deployed to $CI_PAGES_URL"
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+```
